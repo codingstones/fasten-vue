@@ -8,7 +8,7 @@
 
 <script>
 import Hello from './components/Hello'
-import Distribute from './components/Distribute/Distribute'
+import Distribute from './components/Distribute'
 
 export default {
   name: 'app',
