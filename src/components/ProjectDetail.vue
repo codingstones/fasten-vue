@@ -4,7 +4,7 @@
 
     <ul v-for="iteration in project.iterations">
       <li >
-        <router-link v-bind:to="'/projects/' + project.slug + '/iteration/' + iteration.number">
+        <router-link v-bind:to="'/projects/' + project.slug + '/iterations/' + iteration.number">
           Iteración {{ iteration.number }}
         </router-link>
       </li>

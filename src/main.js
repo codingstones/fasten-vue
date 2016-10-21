@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import App from './App';
 import ProjectList from './components/ProjectList';
 import ProjectDetail from './components/ProjectDetail';
+import IterationDetail from './components/IterationDetail';
 import DistributeIterationMoney from './components/DistributeIterationMoney';
 
 Vue.use(VueRouter);
@@ -12,6 +13,7 @@ const routes = [
   { path: '/', redirect: '/projects' },
   { path: '/projects', component: ProjectList },
   { path: '/projects/:id', component: ProjectDetail },
+  { path: '/projects/:id/iterations/:number', component: IterationDetail },
   { path: '/distribute', component: DistributeIterationMoney },
 ]
 
