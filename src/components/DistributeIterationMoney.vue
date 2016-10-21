@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       error: null,
-      iteration: 15,
+      iteration: this.$route.params.number,
       rates: {
         jesus: 20,
         gualis: 20,
