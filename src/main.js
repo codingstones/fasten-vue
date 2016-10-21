@@ -2,11 +2,16 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import App from './App';
-import DistributeIterationMoney from './components/DistributeIterationMoney.vue';
+import ProjectList from './components/ProjectList';
+import ProjectDetail from './components/ProjectDetail';
+import DistributeIterationMoney from './components/DistributeIterationMoney';
 
 Vue.use(VueRouter);
 
 const routes = [
+  { path: '/', redirect: '/projects' },
+  { path: '/projects', component: ProjectList },
+  { path: '/projects/:id', component: ProjectDetail },
   { path: '/distribute', component: DistributeIterationMoney },
 ]
 

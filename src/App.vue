@@ -4,10 +4,6 @@
 
     <h1>Coding Stones Money Distribution</h1>
 
-    <p>
-    <router-link to="/distribute">Distribuye el dinero</router-link>
-    </p>
-
     <router-view></router-view>
   </div>
 </template>
@@ -24,6 +20,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
