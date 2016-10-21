@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
-    <distribute></distribute>
+    <img src="./assets/codingstones.jpg">
+
+    <h1>Coding Stones Money Distribution</h1>
+
+    <p>
+    <router-link to="/distribute">Distribuye el dinero</router-link>
+    </p>
+
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
-import Distribute from './components/Distribute'
-
 export default {
-  name: 'app',
-  components: {
-    Hello,
-    Distribute
-  }
 }
 </script>
 
