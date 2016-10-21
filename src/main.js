@@ -1,8 +1,17 @@
-import Vue from 'vue'
-import App from './App'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import DistributeIterationMoney from './components/DistributeIterationMoney.vue';
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  render: h => h(App)
+Vue.use(VueRouter);
+
+const routes = [
+  { path: '/distribute', component: DistributeIterationMoney },
+]
+
+const router = new VueRouter({
+  routes
 })
+
+const app = new Vue({
+  router
+}).$mount('#app')

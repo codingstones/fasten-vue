@@ -13,8 +13,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "fasten-core": "file:../fasten-core",
     "vue": "^2.0.1",
-    "fasten-core": "file:../fasten-core"
+    "vue-router": "^2.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
