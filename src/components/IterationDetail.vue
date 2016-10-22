@@ -1,44 +1,39 @@
 <template>
   <div id="iteration-detail">
-    <h2>Iteración {{ iteration.number }}:</h2>
+    <h2>Iteración {{ $route.params.number }}:</h2>
 
-    <dl>
+    <dl v-if="iteration != null">
       <dt>Total:</dt>
-      <dd>{{ iteration.total }}</dd>
+      <dd>{{ iteration.total() }}</dd>
 
       <dt>Facturado:</dt>
-      <dd>{{ iteration.invoiced }}</dd>
-
-      <dt>Aportado al común:</dt>
-      <dd>{{ iteration.for_common }}</dd>
-
-      <dt>Total a distribuir:</dt>
-      <dd>{{ iteration.for_distribution }}</dd>
-    </dl>
-
-    <h3>Personas</h3>
-    <distribute-iteration-money></distribute-iteration-money>
+      <dd>{{ iteration.invoiced() }}</dd>
   </div>
 </template>
 
 <script>
 import DistributeIterationMoney from './DistributeIterationMoney';
 
+var fasten = require('fasten-core');
+
+var data = {
+  project: null,
+  iteration: null
+};
+
 export default {
   name: 'iteration-detail',
   components: {
     'distribute-iteration-money': DistributeIterationMoney,
   },
+  mounted() {
+    fasten.ProjectService.findById(this.$route.params.id).then((project) => {
+      data.project = project;
+      data.iteration = project.iterations[this.$route.params.number];
+    });
+  },
   data() {
-    return {
-      iteration: {
-        number: this.$route.params.number,
-        total: 7200,
-        invoiced: 5760,
-        for_common: 200,
-        for_distribution: 5560
-      },
-    }
+    return data;
   }
 };
 </script>

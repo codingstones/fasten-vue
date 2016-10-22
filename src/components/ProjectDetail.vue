@@ -1,36 +1,35 @@
 <template>
   <div id="project-detail">
-    <h2>{{ project.name }}:</h2>
+    <div v-if="project != null">
+      <h2>Proyecto {{ project.name }}:</h2>
 
-    <ul v-for="iteration in project.iterations">
-      <li >
-        <router-link v-bind:to="'/projects/' + project.slug + '/iterations/' + iteration.number">
-          Iteración {{ iteration.number }}
-        </router-link>
-      </li>
-    </ul>
+      <ul v-for="(iteration, index) in project.iterations">
+        <li >
+          <router-link v-bind:to="'/projects/' + project.id + '/iterations/' + index">
+            Iteración {{ index }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 var fasten = require('fasten-core');
-var distributionService = new fasten.DistributionService(new fasten.HttpClient());
+
+var data = {
+  project: null
+};
 
 export default {
   name: 'project-detail',
+  mounted() {
+    fasten.ProjectService.findById(this.$route.params.id).then((project) => {
+      data.project = project;
+    });
+  },
   data() {
-    return {
-      project: {
-        slug: this.$route.params.id,
-        name: 'Conecta',
-        iterations: [
-          {number: 0},
-          {number: 1},
-          {number: 2},
-          {number: 3}
-        ]
-      },
-    }
+    return data;
   }
 };
 </script>
