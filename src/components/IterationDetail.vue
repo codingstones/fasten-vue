@@ -4,10 +4,16 @@
 
     <dl v-if="iteration != null">
       <dt>Total:</dt>
-      <dd>{{ iteration.total() }}</dd>
+      <dd>{{ iteration.total() }} €</dd>
 
       <dt>Facturado:</dt>
-      <dd>{{ iteration.invoiced() }}</dd>
+      <dd>{{ iteration.invoiced() }} €</dd>
+
+      <dt>Aportado al común:</dt>
+      <dd>{{ iteration.forCommon() }}€ ({{ iteration.forCommonAsPercentage() }}%)</dd>
+
+      <dt>Total a repartir:</dt>
+      <dd><strong>{{ iteration.toDistribute() }} €</strong></dd>
   </div>
 </template>
 
