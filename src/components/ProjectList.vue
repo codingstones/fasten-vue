@@ -3,7 +3,7 @@
     <h2>Proyectos:</h2>
     <ul v-for="project in projects">
       <li>
-        <router-link v-bind:to="'/projects/' +  project.slug">{{ project.name }}</router-link>
+        <router-link v-bind:to="'/projects/' +  project.id">{{ project.name }}</router-link>
       </li>
     </ul>
   </div>
@@ -11,19 +11,20 @@
 
 <script>
 var fasten = require('fasten-core');
-var distributionService = new fasten.DistributionService(new fasten.HttpClient());
+
+var data = {
+  projects: null,
+};
 
 export default {
   name: 'project-list',
+  mounted() {
+    fasten.ProjectService.allProjects().then((projects) => {
+      data.projects = projects;
+    });
+  },
   data() {
-    return {
-      projects: [
-        {slug: 'conecta', name: 'Conecta'},
-        {slug: 'roiback', name: 'Roiback'},
-        {slug: 'haize', name: 'Haize'},
-        {slug: 'dide', name: 'Dide'}
-      ],
-    }
+    return data;
   }
 };
 </script>
